@@ -12,3 +12,6 @@ fi
 
 echo "Copy .ini file to /boot"
 cp video_looper.ini /boot
+
+echo "Update startup file"
+cp rc.local /etc
