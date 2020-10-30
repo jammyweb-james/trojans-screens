@@ -1,5 +1,4 @@
-<!doctype html>
-<html lang="en">
+<html >
 <head>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -26,7 +25,14 @@ echo '<meta http-equiv="refresh" content="'. $refresh . '" >';
 </head>
 
 <?PHP
-echo '<body background="assets/images/'.$month.'.jpg"> ';
+echo '<style>
+	body { 
+	  background-image: url("assets/images/'.$month.'.jpg"); 
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+	}
+     </style>'
 ?>
 
 <!-- facebook page plugin -->
@@ -51,10 +57,10 @@ if(nsec<=9) nsec="0"+nsec;
 document.getElementById('clockbox').innerHTML=""+nhour+":"+nmin+":"+nsec+ap+"";
 }
 
-window.onload=function(){
-GetClock();
-setInterval(GetClock,1000);
-}
+// window.onload=function(){
+// GetClock();
+// setInterval(GetClock,1000);
+// }
 </script>
 <style type="text/css">
 .court_name_color {
@@ -81,48 +87,7 @@ setInterval(GetClock,1000);
 
 </style>
 
-<?php
-
-    function after ($thistxt, $inthat)
-    {
-        if (!is_bool(strpos($inthat, $thistxt)))
-        return substr($inthat, strpos($inthat,$thistxt)+strlen($thistxt));
-    };
-
-    function before ($thistxt, $inthat)
-    {
-        return substr($inthat, 0, strpos($inthat, $thistxt));
-    };
-
-    function between ($thistxt, $that, $inthat)
-    {
-        return before ($that, after($thistxt, $inthat));
-    };
-
-?>
-
-<?PHP
-require_once 'simple_html_dom.php';
-$src = file_get_html('http://www.peoriadesignweb.com/cgi-bin/scheduling/trojans_new/schedule.cgi', false, null, 0);
-
-$newSrc = between ('> </tr>', '</table>', $src);
-
-#$newSrc = str_replace('&nbsp','',$newSrc);
-$newSrc = str_replace('<td >','',$newSrc);
-$newSrc = str_replace('</td>','',$newSrc);
-$newSrc = str_replace('a class=openbg','td class=openbg',$newSrc);
-$newSrc = str_replace('</a>','</td>',$newSrc);
-$newSrc = str_replace('<i>X</i>','',$newSrc);
-$newSrc = str_replace('Reserve','Available',$newSrc);
-$newSrc = str_replace('<p class=slot_font>','',$newSrc);
-$newSrc = str_replace('</p>','',$newSrc);
-$newSrc = str_replace('<p class=name_color>','',$newSrc);
-$newSrc = str_replace('class=openbg','',$newSrc);
-$newSrc = str_replace('<a class=whitebg >','',$newSrc);
-$newSrc = str_replace('<th >','<th class="align-middle">',$newSrc);
-$newSrc = preg_replace('/bgcolor=\'(.*?)\'/', '', $newSrc);
-$newSrc = preg_replace('/href=\'(.*?)\'/', '', $newSrc);
-?>
+<script type="module" src="https://unpkg.com/x-frame-bypass"></script>
 
 <CENTRE>
 <hr/>
@@ -134,15 +99,8 @@ $newSrc = preg_replace('/href=\'(.*?)\'/', '', $newSrc);
      <div id="carouselTrojans " class="carousel slide" data-ride="carousel" data-interval="35000">
       <div class="carousel-inner">
        <div class="carousel-item active"> 
-         <TABLE class="table table-striped table-sm "  style="background:#dddddd;">
-          <tbody>
-
-<?PHP
-echo $newSrc;
-?>
-           <tr> <th class=slot><i>Time</i></th> <th class=court_name_color> <i>Court 3</i></th> <th class=court_name_color> <i>Court 4</i></th><th class=court_name_color> <i>Court 5</i></th> <th class=court_name_color> <i>Court 6</i></th><th class=slot><i>Time</i></th></tr>
-          </tbody>
-         </TABLE>
+	 <!-- <embed src="https://bookings.trojans.org.uk/trojans/wbadmin.aspx?sharedid=Shared-a5de-1ab849-c11e-a829ecd"  width="1280" height="900" style="transform: scale(0.74); transform-origin: 0% -15%;" ></embed> -->
+         <embed src="assets/images/booking.png" width="1280" height="900" />
        </div>
        <div class="carousel-item"> 
          <img src="assets/images/hampshire_psa_2020.png" height="900" border="5"/> </li>
@@ -159,11 +117,11 @@ echo $newSrc;
     </div>
 
     <div class="col-md-4">
-     <div id="clockbox" style="background: #F7F6F5; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-align: center;font:30pt Arial Bold; color:#cc071e;"></div>
+      <iframe src="http://free.timeanddate.com/clock/i7ixlu74/n300/fn2/fs48/tcff0/pct/ftb/bas2/bacf00/th1" frameborder="0" width="231" height="74" allowTransparency="true"></iframe> 
     </div>
 
     <div class="col-md-4">
-     <div> Boxes powered by squashlevels.com <img src="assets/images/squashlevels_nw.png" height="75" border="0"/></div>
+      <div> Boxes powered by squashlevels.com <img src="assets/images/squashlevels_nw.png" height="75" border="0"/></div>
     </div>
    </div>
   </div>
@@ -222,3 +180,5 @@ echo $newSrc;
 
 </body>
 </html>
+
+

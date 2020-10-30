@@ -14,5 +14,7 @@ echo "Update html files"
 cp *.php /var/www/html
 
 echo "update images"
+[ ! -d "/var/www/html/assets" ] && mkdir /var/www/html/assets
+[ ! -d "/var/www/html/assets/images" ] && mkdir /var/www/html/assets/images
 cp *.png /var/www/html/assets/images
 cp *.jpg /var/www/html/assets/images
