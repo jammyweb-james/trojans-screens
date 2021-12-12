@@ -18,3 +18,6 @@ cp rc.local /etc
 
 echo "Set startvid to +x"
 chmod +x startvid.sh
+
+echo "Use crontab -e to set"
+echo "@reboot /home/pi/trojans-screens/barvid/startvid.sh"
