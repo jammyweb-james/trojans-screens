@@ -15,3 +15,6 @@ cp video_looper.ini /boot
 
 echo "Update startup file"
 cp rc.local /etc
+
+echo "Set startvid to +x"
+chmod +x startvid.sh
