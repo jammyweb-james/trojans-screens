@@ -21,6 +21,6 @@ echo "Updating Trojans bar vids"
 cd /home/pi/trojans-screens
 git pull
 cd barvid
-sudo ./install.sh
+sudo ./install.sh > barvid.log
 
 exit 0
